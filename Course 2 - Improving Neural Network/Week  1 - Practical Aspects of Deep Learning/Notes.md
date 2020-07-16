@@ -24,8 +24,10 @@
   - If the size of the dataset size is in millions then the train/dev/test set ratio will be like 98/1/1% or 99.5/0.25/0.25% or 99.5/0.4/0.1% respectively.
   - The trend now gives the training data the biggest set.
 - We also have to make sure that the dev and test set comes from the same distribution
+  
   - For example, if cat training pictures are taken from the web which are high quality images  and the dev/test pictures are from users cell phone which are of low quality then the distribution will mismatch. So it is a good idea to make sure that the dev/test set are coming from the same distribution.
 - The dev/set rule is to try them on some of the good models we have created.
+  
   - Its okay to have only a dev set without a testing set. But a lot of people in this case call the dev-set as the test set. A better terminology is to call it as dev set as it is used in the development.
 
 ## **Bias Variance**
@@ -46,6 +48,98 @@
   | Test Error     |             11%              |            14%             |                             30%                             |  1%  |
 
   These assumptions came from the fact that the humans have 0% error. If the problem isn't like that then we'll need to use human error as base line.
+
+## **Basic Recipe for Machine Learning**
+
+- If our algorithm has a high bias then we should
+
+  - Try to make our network bigger (by increasing size of hidden units or number of hidden layers)
+  - Try a different model which is suitable for our data.
+  - Try to run it for longer time.
+  - Different advanced optimization algorithms.
+
+- If our algorithm has a high variance then we should
+
+  - Get more data if possible
+  - If getting more data is not possible then we should try regularization
+  - Try a different model which is suitable for our chosen data.
+
+  <img src="./Images/nnrecipe.png">
+
+- We should try the above cycle until we get a balance low bias/variance.
+
+- In early days of machine learning before deep learning people were talking of "Bias/Variance trade off". But now we have more tools to solve bias and variance problems so it is really helpful in deep learning.
+
+- Training a bigger neural network never hurts.
+
+## **Regularization**
+
+- We can reduce high variance of our neural network by adding regularization to our neural network.
+
+- L1 matrix norm:
+
+  $$\Large ||W||=\sum_{j=1}^{n_x}(|w_{i,j}|)$$
+
+  - Sum of absolute values of all $\large w$s.
+
+- L2 matrix norm:
+
+  $$\Large ||W||^{2}=\sum_{j=1}^{n_x}|w_{i,j}|^{2}=w^{T}w$$
+  
+  - For arcane technical math reasons called as **Frobenius Norm**.
+
+<ins>**Regularization for Logistic Regression**</ins>
+
+- The normal cost function that we want to minimize is
+
+  $$\large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y)$$
+
+- The L2 regularization version:
+
+  $$\large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||W||_{2}^{2}$$
+
+- The L1 regularization version:
+
+  $$\large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||W||_{1}$$
+
+- The L1 regularization makes $\large w$ sparse by making a lot of values in $\large w$ zero which makes the model size smaller.
+- L2 regularization is being used much more often.
+- $\lambda$ here is the regularization parameter (hyperparameter).
+
+<ins>**Regularization for Neural Network**</ins>
+
+- The normal cost function that we want to minimize is:
+
+  $$\large J(w1,b1,...wL,bL)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y}_i,y_i)$$
+
+- The L2 regularization version:
+
+  $$\large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||W||_{2}^{2}$$
+
+- We stack the matrix as one vector (m~n~, 1) and then we apply 
+
+  $$\sqrt{(w1^2 + w2^2+...+)}$$
+
+- For backpropagation before applying regularization:
+
+  $$\large dw^{[l]}=from\space backprop$$
+
+- Back propagation with regularization:
+
+  $$\large dw^{[l]}=(from\space propagation) +\frac{\lambda}{m}w^{[l]}$$
+
+- The update step will be
+
+  $$\large w^{[l]}=w^{[l]}-\alpha \space dw^{[l]}$$
+
+  $$\large w^{[l]}=w^{[l]}-\alpha [(from \space backpropagation)+\frac{\lambda}{m}w^{[l]}]$$
+
+  $$\large \space \space \space \space \space \space \space=w^{[l]}-+\frac{\alpha \lambda}{m}w^{[l]}-\alpha \times (from \space backpropagation) $$ 
+
+  $$\large \space \space \space \space \space \space \space=w^{[l]}[1-\frac{\alpha \lambda}{m}]-\alpha \times (from \space backpropagation) $$ 
+
+- In practice this penalizes large weights and effectively limits the freedom of our model.
+- The new term $\large [1-(\frac {\alpha \lambda}{m})]w^{[l]}$ causes the **weight to decay** in proportion to its size. 
 
 
 
