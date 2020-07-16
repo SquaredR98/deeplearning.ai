@@ -80,6 +80,10 @@
 
   $$\Large ||W||=\sum_{j=1}^{n_x}(|w_{i,j}|)$$
 
+  ```html
+  <img src="https://render.githubusercontent.com/render/math?math=\Large ||W||=\sum_{j=1}^{n_x}(|w_{i,j}|)">
+  ```
+
   - Sum of absolute values of all $\large w$s.
 
 - L2 matrix norm:
