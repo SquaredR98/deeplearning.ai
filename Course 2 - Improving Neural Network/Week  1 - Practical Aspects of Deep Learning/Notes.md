@@ -1,6 +1,6 @@
 # **Practical Aspects of Deep Learning**
 
-## <ins>**Train / Dev / Test Sets**</ins>
+## **Train / Dev / Test Sets**
 
 - It is impossible to get all our hyperparameters guessed correctly on a new application at the first attempt. So we have to through the following  loop:
 
@@ -42,7 +42,7 @@
 
 - The above idea works for 2-D data where visualization is very easy. For more than 2 dimensional data we have to follow following approach.
 
-  |                | High Variance (Over-fitting) | High Bias  (Under-fitting) | High  Bias (Under- Fitting) && HIGh Variance (Over-fitting) | Best |
+  |                | High Variance (Over-fitting) | High Bias  (Under-fitting) | High  Bias (Under- Fitting) && High Variance (Over-fitting) | Best |
   | -------------- | :--------------------------: | :------------------------: | :---------------------------------------------------------: | :--: |
   | Training Error |              1%              |            15%             |                             15%                             | 0.5% |
   | Test Error     |             11%              |            14%             |                             30%                             |  1%  |
@@ -74,76 +74,83 @@
 
 ## **Regularization**
 
-- We can reduce high variance of our neural network by adding regularization to our neural network.
+- We can reduce high variance/overfitting of our neural network by adding regularization to our neural network.
 
 - L1 matrix norm:
 
-  $$\Large ||W||=\sum_{j=1}^{n_x}(|w_{i,j}|)$$
-
-  ```html
-  <img src="https://render.githubusercontent.com/render/math?math=\Large ||W||=\sum_{j=1}^{n_x}(|w_{i,j}|)">
-  ```
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large ||w||=\sum_{j=1}^{n_x}(|w_{i,j}|)" title="{_{}}^{}" /></a>
 
   - Sum of absolute values of all $\large w$s.
 
 - L2 matrix norm:
 
-  $$\Large ||W||^{2}=\sum_{j=1}^{n_x}|w_{i,j}|^{2}=w^{T}w$$
-  
-  - For arcane technical math reasons called as **Frobenius Norm**.
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large ||w||^{2}_2=\sum_{j=1}^{n_x}|w_{j}|^{2}=w^{T}w" title="{_{}}^{}" /></a>
 
 <ins>**Regularization for Logistic Regression**</ins>
 
 - The normal cost function that we want to minimize is
 
-  $$\large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y)$$
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y)" title="{_{}}^{}" /></a>
 
 - The L2 regularization version:
 
-  $$\large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||W||_{2}^{2}$$
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||w||_{2}^{2}" title="{_{}}^{}" /></a>
+
+  ​														**OR**
+
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||w||_{2}^{2} + \frac{\lambda}{2m}||b||^{2}" title="{_{}}^{}" /></a>
+
+  - For arcane technical math reasons called as **Frobenius Norm**.
+
+  - We can add the bias squared term in our regularized expression but 
 
 - The L1 regularization version:
 
-  $$\large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||W||_{1}$$
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||w||_{1}" title="{_{}}^{}" /></a>
 
 - The L1 regularization makes $\large w$ sparse by making a lot of values in $\large w$ zero which makes the model size smaller.
+
 - L2 regularization is being used much more often.
+
 - $\lambda$ here is the regularization parameter (hyperparameter).
 
 <ins>**Regularization for Neural Network**</ins>
 
 - The normal cost function that we want to minimize is:
 
-  $$\large J(w1,b1,...wL,bL)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y}_i,y_i)$$
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large J(w^{[1]},b1^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum_{i=1}^{m}\mathcal{L}(\hat{y}_i,y_i)" title="{_{}}^{}" /></a> 
 
 - The L2 regularization version:
 
-  $$\large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||W||_{2}^{2}$$
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large J(w^{[l]},b^{[l]})=\frac{1}{m}\sum_{i=1}^{m}\mathcal{L}(\hat{y}_i,y_i)+ \frac{\lambda}{2m}||w^{[l]}||_{F}^{2}" title="{_{}}^{}" /></a>
 
 - We stack the matrix as one vector (m~n~, 1) and then we apply 
 
-  $$\sqrt{(w1^2 + w2^2+...+)}$$
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large \sqrt{(w1^2 + w2^2+...+)}" title="{_{}}^{}" /></a>
 
 - For backpropagation before applying regularization:
 
-  $$\large dw^{[l]}=from\space backprop$$
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large dw^{[l]}=from\space backprop" title="{_{}}^{}" /></a>
 
 - Back propagation with regularization:
 
-  $$\large dw^{[l]}=(from\space propagation) +\frac{\lambda}{m}w^{[l]}$$
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large dw^{[l]}=(from\space backpropagation) + \frac {\lambda}{m}w^{[l]}" title="{_{}}^{}" /></a>
 
 - The update step will be
 
-  $$\large w^{[l]}=w^{[l]}-\alpha \space dw^{[l]}$$
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large w^{[l]}=w^{[l]}-\alpha \space dw^{[l]}" title="{_{}}^{}" /></a>
 
-  $$\large w^{[l]}=w^{[l]}-\alpha [(from \space backpropagation)+\frac{\lambda}{m}w^{[l]}]$$
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large w^{[l]}=w^{[l]}-\alpha [(from \space backpropagation)+\frac{\lambda}{m}w^{[l]}]" title="{_{}}^{}" /></a>
 
-  $$\large \space \space \space \space \space \space \space=w^{[l]}-+\frac{\alpha \lambda}{m}w^{[l]}-\alpha \times (from \space backpropagation) $$ 
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large =w^{[l]}-+\frac{\alpha \lambda}{m}w^{[l]}-\alpha \times (from \space backpropagation) " title="{_{}}^{}" /></a>
 
-  $$\large \space \space \space \space \space \space \space=w^{[l]}[1-\frac{\alpha \lambda}{m}]-\alpha \times (from \space backpropagation) $$ 
+  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large =w^{[l]}[1-\frac{\alpha \lambda}{m}]-\alpha \times (from \space backpropagation)" title="{_{}}^{}" /></a>
+
+  $$\large \space \space \space \space \space \space \space $$ 
 
 - In practice this penalizes large weights and effectively limits the freedom of our model.
-- The new term $\large [1-(\frac {\alpha \lambda}{m})]w^{[l]}$ causes the **weight to decay** in proportion to its size. 
+
+- The new term <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large [1-(\frac {\alpha \lambda}{m})]w^{[l]}" title="{_{}}^{}" /></a>causes the **weight to decay** in proportion to its size so L2 regularization is also called **weight decay**.
 
 
 
