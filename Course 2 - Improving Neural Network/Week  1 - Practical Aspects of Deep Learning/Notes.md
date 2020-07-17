@@ -42,7 +42,7 @@
 
 - The above idea works for 2-D data where visualization is very easy. For more than 2 dimensional data we have to follow following approach.
 
-  |                | High Variance (Over-fitting) | High Bias  (Under-fitting) | High  Bias (Under- Fitting) && High Variance (Over-fitting) | Best |
+  |                | High Variance (Over-fitting) | High Bias  (Under-fitting) | High  Bias (Under- Fitting) && HIGh Variance (Over-fitting) | Best |
   | -------------- | :--------------------------: | :------------------------: | :---------------------------------------------------------: | :--: |
   | Training Error |              1%              |            15%             |                             15%                             | 0.5% |
   | Test Error     |             11%              |            14%             |                             30%                             |  1%  |
@@ -77,8 +77,6 @@
 - We can reduce high variance/overfitting of our neural network by adding regularization to our neural network.
 
 - L1 matrix norm:
-
-  <a href="https://www.codecogs.com/eqnedit.php?latex=\Large ||w||=\sum_{j=1}^{n_x}(|w_{i,j}|)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large ||w||=\sum_{j=1}^{n_x}(|w_{i,j}|)" title="\Large ||w||=\sum_{j=1}^{n_x}(|w_{i,j}|)" /></a>
 
   <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large ||w||=\sum_{j=1}^{n_x}(|w_{i,j}|)" title="{_{}}^{}" /></a>
 
@@ -120,39 +118,39 @@
 
 - The normal cost function that we want to minimize is:
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large J(w^{[1]},b1^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum_{i=1}^{m}\mathcal{L}(\hat{y}_i,y_i)" title="{_{}}^{}" /></a> 
+  $$\Large J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum_{i=1}^{m}\mathcal{L}(\hat{y}_i,y_i)$$
 
 - The L2 regularization version:
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large J(w^{[l]},b^{[l]})=\frac{1}{m}\sum_{i=1}^{m}\mathcal{L}(\hat{y}_i,y_i)+ \frac{\lambda}{2m}||w^{[l]}||_{F}^{2}" title="{_{}}^{}" /></a>
+  $$\Large J(w^{[l]},b^{[l]})=\frac{1}{m}\sum_{i=1}^{m}\mathcal{L}(\hat{y}_i,y_i)+ \frac{\lambda}{2m}||w^{[l]}||_{F}^{2}$$
+
+  
 
 - We stack the matrix as one vector (m~n~, 1) and then we apply 
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large \sqrt{(w1^2 + w2^2+...+)}" title="{_{}}^{}" /></a>
+  $$\sqrt{(w1^2 + w2^2+...+)}$$
 
 - For backpropagation before applying regularization:
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large dw^{[l]}=from\space backprop" title="{_{}}^{}" /></a>
+  $$\large dw^{[l]}=from\space backprop$$
 
 - Back propagation with regularization:
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large dw^{[l]}=(from\space backpropagation) + \frac {\lambda}{m}w^{[l]}" title="{_{}}^{}" /></a>
+  $$\large dw^{[l]}=(from\space propagation) +\frac{\lambda}{m}w^{[l]}$$
 
 - The update step will be
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large w^{[l]}=w^{[l]}-\alpha \space dw^{[l]}" title="{_{}}^{}" /></a>
+  $$\large w^{[l]}=w^{[l]}-\alpha \space dw^{[l]}$$
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large w^{[l]}=w^{[l]}-\alpha [(from \space backpropagation)+\frac{\lambda}{m}w^{[l]}]" title="{_{}}^{}" /></a>
+  $$\large w^{[l]}=w^{[l]}-\alpha [(from \space backpropagation)+\frac{\lambda}{m}w^{[l]}]$$
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large =w^{[l]}-+\frac{\alpha \lambda}{m}w^{[l]}-\alpha \times (from \space backpropagation) " title="{_{}}^{}" /></a>
+  $$\large \space \space \space \space \space \space \space=w^{[l]}-+\frac{\alpha \lambda}{m}w^{[l]}-\alpha \times (from \space backpropagation) $$ 
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large =w^{[l]}[1-\frac{\alpha \lambda}{m}]-\alpha \times (from \space backpropagation)" title="{_{}}^{}" /></a>
-
-  $$\large \space \space \space \space \space \space \space $$ 
+  $$\large \space \space \space \space \space \space \space=w^{[l]}[1-\frac{\alpha \lambda}{m}]-\alpha \times (from \space backpropagation) $$ 
 
 - In practice this penalizes large weights and effectively limits the freedom of our model.
 
-- The new term <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large [1-(\frac {\alpha \lambda}{m})]w^{[l]}" title="{_{}}^{}" /></a>causes the **weight to decay** in proportion to its size so L2 regularization is also called **weight decay**.
+- The new term $\large [1-(\frac {\alpha \lambda}{m})]w^{[l]}$ causes the **weight to decay** in proportion to its size so L2 regularization is also called **weight decay**.
 
 
 
