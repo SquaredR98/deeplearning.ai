@@ -78,27 +78,27 @@
 
 - L1 matrix norm:
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large ||w||=\sum_{j=1}^{n_x}(|w_{i,j}|)" title="{_{}}^{}" /></a>
+  $$\Large ||w||=\sum_{j=1}^{n_x}(|w_{i,j}|)$$
 
   - Sum of absolute values of all $\large w$s.
 
 - L2 matrix norm:
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large ||w||^{2}_2=\sum_{j=1}^{n_x}|w_{j}|^{2}=w^{T}w" title="{_{}}^{}" /></a>
+  $$\Large ||w||^{2}_2=\sum_{j=1}^{n_x}|w_{j}|^{2}=w^{T}w$$
 
 <ins>**Regularization for Logistic Regression**</ins>
 
 - The normal cost function that we want to minimize is
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y)" title="{_{}}^{}" /></a>
+  $$\Large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y)$$
 
 - The L2 regularization version:
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||w||_{2}^{2}" title="{_{}}^{}" /></a>
+  $$\Large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||w||_{2}^{2}$$
 
   ​														**OR**
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||w||_{2}^{2} + \frac{\lambda}{2m}||b||^{2}" title="{_{}}^{}" /></a>
+  $$\Large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||w||_{2}^{2} + \frac{\lambda}{2m}||b||^{2}$$
 
   - For arcane technical math reasons called as **Frobenius Norm**.
 
@@ -106,7 +106,7 @@
 
 - The L1 regularization version:
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||w||_{1}" title="{_{}}^{}" /></a>
+  $$\large J(w,b)=\frac{1}{m} \sum_{i=1}^{m}\mathcal{L}(\hat{y},y) + \frac{\lambda}{2m}||w||_{1}$$
 
 - The L1 regularization makes $\large w$ sparse by making a lot of values in $\large w$ zero which makes the model size smaller.
 
@@ -128,29 +128,29 @@
 
 - We stack the matrix as one vector (m~n~, 1) and then we apply 
 
-  $$\sqrt{(w1^2 + w2^2+...+)}$$
+  $$\Large \sqrt{(w1^2 + w2^2+...+)}$$
 
 - For backpropagation before applying regularization:
 
-  $$\large dw^{[l]}=from\space backprop$$
+  $$\Large dw^{[l]}=from\space backprop$$
 
 - Back propagation with regularization:
 
-  $$\large dw^{[l]}=(from\space propagation) +\frac{\lambda}{m}w^{[l]}$$
+  $$\Large dw^{[l]}=(from\space propagation) +\frac{\lambda}{m}w^{[l]}$$
 
 - The update step will be
 
-  $$\large w^{[l]}=w^{[l]}-\alpha \space dw^{[l]}$$
+  $$\Large w^{[l]}=w^{[l]}-\alpha \space dw^{[l]}$$
 
-  $$\large w^{[l]}=w^{[l]}-\alpha [(from \space backpropagation)+\frac{\lambda}{m}w^{[l]}]$$
+  $$\Large w^{[l]}=w^{[l]}-\alpha [(from \space backpropagation)+\frac{\lambda}{m}w^{[l]}]$$
 
-  $$\large \space \space \space \space \space \space \space=w^{[l]}-+\frac{\alpha \lambda}{m}w^{[l]}-\alpha \times (from \space backpropagation) $$ 
+  $$\Large \space \space \space \space \space \space \space=w^{[l]}-+\frac{\alpha \lambda}{m}w^{[l]}-\alpha \times (from \space backpropagation) $$ 
 
-  $$\large \space \space \space \space \space \space \space=w^{[l]}[1-\frac{\alpha \lambda}{m}]-\alpha \times (from \space backpropagation) $$ 
+  $$\Large \space \space \space \space \space \space \space=w^{[l]}[1-\frac{\alpha \lambda}{m}]-\alpha \times (from \space backpropagation) $$ 
 
 - In practice this penalizes large weights and effectively limits the freedom of our model.
 
-- The new term $\large [1-(\frac {\alpha \lambda}{m})]w^{[l]}$ causes the **weight to decay** in proportion to its size so L2 regularization is also called **weight decay**.
+- The new term $\Large [1-(\frac {\alpha \lambda}{m})]w^{[l]}$ causes the **weight to decay** in proportion to its size so L2 regularization is also called **weight decay**.
 
 
 
