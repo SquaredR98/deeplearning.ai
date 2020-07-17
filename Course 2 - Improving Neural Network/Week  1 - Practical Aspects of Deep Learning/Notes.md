@@ -78,6 +78,8 @@
 
 - L1 matrix norm:
 
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\Large ||w||=\sum_{j=1}^{n_x}(|w_{i,j}|)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large ||w||=\sum_{j=1}^{n_x}(|w_{i,j}|)" title="\Large ||w||=\sum_{j=1}^{n_x}(|w_{i,j}|)" /></a>
+
   <a href="https://www.codecogs.com/eqnedit.php?latex={_{}}^{}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Large ||w||=\sum_{j=1}^{n_x}(|w_{i,j}|)" title="{_{}}^{}" /></a>
 
   - Sum of absolute values of all $\large w$s.
