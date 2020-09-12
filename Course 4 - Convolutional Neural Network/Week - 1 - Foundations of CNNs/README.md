@@ -45,25 +45,25 @@
 - For horizontal edge detection filter/kernel would be like this
 
   ```
- 1	 1	 1
+   1	 1	 1
    0	 0	 0
-  -1	-1	-1
+   -1	-1	-1
   ```
   
 - There are a lot of ways we can put number inside the horizontal or vertical edge detections. For example here are the vertical **Sobel** filter (The idea is taking care of the middle row):
 
   ```
-  1	0	-1
-  2	0	-2
-  1	0	-1
+   1	0	-1
+   2	0	-2
+   1	0	-1
   ```
 
 - Also something called **Scharr** filter (The idea is taking great care of the middle row):
 
   ```
-   3	0	 -3
-  10	0	-10
-   3	0	 -3
+    3	0	 -3
+   10	0	-10
+    3	0	 -3
   ```
 
 - What we learned in the deep learning is that we don't need to hand craft these numbers, we can treat them as weights and then learn them. It can learn horizontal, vertical, angled, or any edge type automatically rather than getting them by hand.
