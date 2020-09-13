@@ -13,21 +13,21 @@
     - Add regularization
     - Get more training data
     
-    Note: Check [here](https://raw.githubusercontent.com/SquaredR98/deeplearning.ai/master/Course%202%20-%20Improving%20Neural%20Network/Week%20%201%20-%20Practical%20Aspects%20of%20Deep%20Learning/Images/nnrecipe.png).
+    Note: Check [here](https://user-images.githubusercontent.com/14886380/29240263-f7c517ca-7f93-11e7-8549-58856e0ed12f.png).
 
 4. You are working on an automated check-out kiosk for a supermarket, and are building a classifier for apples, bananas and oranges. Suppose your classifier obtains a training set error of 0.5%, and a dev set error of 7%. Which of the following are promising things to try to improve your classifier? (Check all that apply.)
 
     - Increase the regularization parameter lambda
     - Get more training data
 
-    Note: Check [here](https://raw.githubusercontent.com/SquaredR98/deeplearning.ai/master/Course%202%20-%20Improving%20Neural%20Network/Week%20%201%20-%20Practical%20Aspects%20of%20Deep%20Learning/Images/nnrecipe.png).
+    Note: Check [here](https://user-images.githubusercontent.com/14886380/29240263-f7c517ca-7f93-11e7-8549-58856e0ed12f.png).
     
  5. What is weight decay?
 
     - A regularization technique (such as L2 regularization) that results in gradient descent shrinking the weights on every iteration.
     
  6. What happens when you increase the regularization hyperparameter lambda?
-
+ 
     - Weights are pushed toward becoming smaller (closer to 0)
 
 7. With the inverted dropout technique, at test time:
