@@ -74,9 +74,9 @@
 
 - In the last section we saw that a 6 x 6 matrix convolved with 3 x 3 filter/kernel gives us a 4 x 4 matrix.
 
-- To give it a general rule, if a matrix <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;n&space;\times&space;\textbf&space;n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;n&space;\times&space;\textbf&space;n" title="\textbf n \times \textbf n" /></a> is convolved with <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;f&space;\times&space;\textbf&space;f" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;f&space;\times&space;\textbf&space;f" title="\textbf f \times \textbf f" /></a> filter/kernel give us <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;(\textbf&space;n&space;-&space;\textbf&space;f&space;&plus;&space;\textbf&space;1)&space;\times&space;(\textbf&space;n&space;-&space;\textbf&space;f&space;&plus;&space;\textbf&space;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;(\textbf&space;n&space;-&space;\textbf&space;f&space;&plus;&space;\textbf&space;1)&space;\times&space;(\textbf&space;n&space;-&space;\textbf&space;f&space;&plus;&space;\textbf&space;1)" title="(\textbf n - \textbf f + \textbf 1) \times (\textbf n - \textbf f + \textbf 1)" /></a> matrix. 
+- To give it a general rule, if a matrix <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;n\times&space;n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;n&space;\times&space;n" title="n \times  n" /></a> is convolved with <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;f&space;\times&space;f" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;f&space;\times&space;f" title="f \times f" /></a> filter/kernel give us <a href="https://www.codecogs.com/eqnedit.php?latex=(n-f&plus;1)&space;\times&space;(n-f&plus;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(n-f&plus;1)&space;\times&space;(n-f&plus;1)" title="(n-f+1) \times (n-f+1)" /></a>matrix. 
 
-- The convolution operation shrinks the matrix if <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;f&space;>&space;\textbf&space;1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;f&space;>&space;\textbf&space;1" title="\textbf f > \textbf 1" /></a>.
+- The convolution operation shrinks the matrix if <a href="https://www.codecogs.com/eqnedit.php?latex=f&space;>&space;1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f&space;>&space;1" title="f > 1" /></a>.
 
 - We want to apply convolution operation multiple times, but if the image shrinks we will lose a lot of data on this process. Also the edges pixels are used less than other pixels in an image.
 
@@ -85,51 +85,51 @@
   - Shrinks output.
   - throwing away a lot of information that are in the edges.
 
-- To solve these problems we can pad the input image before convolution by adding some rows and columns to it. We will call the padding amount <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;p" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;p" title="\textbf p" /></a> the number of row/columns that we will insert in top, bottom, left and right of the image.
+- To solve these problems we can pad the input image before convolution by adding some rows and columns to it. We will call the padding amount <a href="https://www.codecogs.com/eqnedit.php?latex=p" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p" title="p" /></a>the number of row/columns that we will insert in top, bottom, left and right of the image.
 
 - In almost all the cases the padding values are zeros.
 
-- The general rule now,  if a matrix <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;n&space;\times&space;\textbf&space;n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;n&space;\times&space;\textbf&space;n" title="\textbf n \times \textbf n" /></a> is convolved with <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;f&space;\times&space;\textbf&space;f" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;f&space;\times&space;\textbf&space;f" title="\textbf f \times \textbf f" /></a> filter/kernel and padding <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;p" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;p" title="\textbf p" /></a> give us <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;(\textbf&space;n&space;&plus;&space;\textbf&space;2&space;\textbf&space;p&space;-\textbf&space;f&space;&plus;&space;\textbf&space;1)&space;\times&space;(\textbf&space;n&space;&plus;&space;\textbf&space;2&space;\textbf&space;p&space;-\textbf&space;f&space;&plus;&space;\textbf&space;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;(\textbf&space;n&space;&plus;&space;\textbf&space;2&space;\textbf&space;p&space;-\textbf&space;f&space;&plus;&space;\textbf&space;1)&space;\times&space;(\textbf&space;n&space;&plus;&space;\textbf&space;2&space;\textbf&space;p&space;-\textbf&space;f&space;&plus;&space;\textbf&space;1)" title="(\textbf n + \textbf 2 \textbf p -\textbf f + \textbf 1) \times (\textbf n + \textbf 2 \textbf p -\textbf f + \textbf 1)" /></a> matrix. 
+- The general rule now,  if a matrix <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;n\times&space;n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;n&space;\times&space;n" title="n \times  n" /></a>is convolved with  <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;f&space;\times&space;f" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;f&space;\times&space;f" title="f \times f" /></a>filter/kernel and padding <a href="https://www.codecogs.com/eqnedit.php?latex=p" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p" title="p" /></a> give us <a href="https://www.codecogs.com/eqnedit.php?latex=(n&space;&plus;&space;2p&space;-&space;f&space;&plus;&space;1)\times(n&space;&plus;&space;2p&space;-&space;f&space;&plus;&space;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(n&space;&plus;&space;2p&space;-&space;f&space;&plus;&space;1)\times(n&space;&plus;&space;2p&space;-&space;f&space;&plus;&space;1)" title="(n + 2p - f + 1)\times(n + 2p - f + 1)" /></a> matrix. 
 
 - If n = 6, f = 3, and p = 1 Then the output image will have 
 
-  n + 2p - f + 1 = 6 + 2 - 3 + 1 = 6
+  <a href="https://www.codecogs.com/eqnedit.php?latex=(n&space;&plus;&space;2p&space;-&space;f&space;&plus;&space;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(n&space;&plus;&space;2p&space;-&space;f&space;&plus;&space;1)" title="(n + 2p - f + 1)" /></a> = 6 + 2 - 3 + 1 = 6
 
   We maintain the size of the image.
 
 - **Same convolutions** is a convolution with a pad so that output size is the same as the input size. Its given by the equation:
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;p&space;=&space;(\textbf&space;f-&space;\textbf&space;1)&space;/&space;\textbf&space;2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;p&space;=&space;(\textbf&space;f-&space;\textbf&space;1)&space;/&space;\textbf&space;2" title="\textbf p = (\textbf f- \textbf 1) / \textbf 2" /></a>
+  <a href="https://www.codecogs.com/eqnedit.php?latex=p&space;=&space;\frac{(f&space;-&space;1)}{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p&space;=&space;\frac{(f&space;-&space;1)}{2}" title="p = \frac{(f - 1)}{2}" /></a>
 
-- In computer vision **f** is usually odd. Some of the reasons is that it will have a centre value.
+- In computer vision <a href="https://www.codecogs.com/eqnedit.php?latex=f" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f" title="f" /></a> is usually odd. Some of the reasons is that it will have a centre value.
 
 ## Strided convolution
 
 - Strided convolution is another piece that are used in CNNs.
 
-- We will call stride **`S`**.
+- We will call stride <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;s" title="\large s" /></a>.
 
-- When we are making the convolution operation we used **`S`** to tell us the number of pixels we will jump when we are convolving filter/kernel. The last examples we described S was 1.
+- When we are making the convolution operation we used <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;s" title="\large s" /></a> to tell us the number of pixels we will jump when we are convolving filter/kernel. The last examples we described <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;s" title="\large s" /></a> was 1.
 
 - Now the general rule is:
 
-  - if a matrix <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;n&space;\times&space;\textbf&space;n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;n&space;\times&space;\textbf&space;n" title="\textbf n \times \textbf n" /></a> is convolved with <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;f&space;\times&space;\textbf&space;f" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;f&space;\times&space;\textbf&space;f" title="\textbf f \times \textbf f" /></a> filter/kernel and padding <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;p" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;p" title="\textbf p" /></a> and stride <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\LARGE&space;\textbf&space;s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\LARGE&space;\textbf&space;s" title="\LARGE \textbf s" /></a> it give us 
+  - if a matrix <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;n\times&space;n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;n&space;\times&space;n" title="n \times  n" /></a> is convolved with <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;f&space;\times&space;f" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;f&space;\times&space;f" title="f \times f" /></a> filter/kernel and padding <a href="https://www.codecogs.com/eqnedit.php?latex=p" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p" title="p" /></a> and stride <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;s" title="\large s" /></a> it give us 
 
-    <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{120}&space;\frac{(\textbf&space;n&space;&plus;&space;\textbf&space;2&space;\textbf&space;p&space;-&space;\textbf&space;f)}{\textbf&space;s}&space;&plus;&space;\textbf&space;1,\frac{(\textbf&space;n&space;&plus;&space;\textbf&space;2&space;\textbf&space;p&space;-&space;\textbf&space;f)}{\textbf&space;s}&space;&plus;&space;\textbf&space;1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\frac{(\textbf&space;n&space;&plus;&space;\textbf&space;2&space;\textbf&space;p&space;-&space;\textbf&space;f)}{\textbf&space;s}&space;&plus;&space;\textbf&space;1,\frac{(\textbf&space;n&space;&plus;&space;\textbf&space;2&space;\textbf&space;p&space;-&space;\textbf&space;f)}{\textbf&space;s}&space;&plus;&space;\textbf&space;1" title="\frac{(\textbf n + \textbf 2 \textbf p - \textbf f)}{\textbf s} + \textbf 1,\frac{(\textbf n + \textbf 2 \textbf p - \textbf f)}{\textbf s} + \textbf 1" /></a>
+    <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\left(\frac{n&plus;2p-f}{s}&plus;1&space;\right&space;)\times&space;\left(\frac{n&plus;2p-f}{s}&plus;1&space;\right&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;\left(\frac{n&plus;2p-f}{s}&plus;1&space;\right&space;)\times&space;\left(\frac{n&plus;2p-f}{s}&plus;1&space;\right&space;)" title="\large \left(\frac{n+2p-f}{s}+1 \right )\times \left(\frac{n+2p-f}{s}+1 \right )" /></a>
 
     matrix. 
 
-- In case <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\dpi{150}&space;\frac{(\textbf&space;n&space;&plus;&space;\textbf&space;2&space;\textbf&space;p&space;-&space;\textbf&space;f)}{\textbf&space;s}&space;&plus;&space;\textbf&space;1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{150}&space;\frac{(\textbf&space;n&space;&plus;&space;\textbf&space;2&space;\textbf&space;p&space;-&space;\textbf&space;f)}{\textbf&space;s}&space;&plus;&space;\textbf&space;1" title="\frac{(\textbf n + \textbf 2 \textbf p - \textbf f)}{\textbf s} + \textbf 1" /></a> is fraction we can take **floor** of this value.
+- In case <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\left(\frac{n&plus;2p-f}{s}&plus;1&space;\right&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;\left(\frac{n&plus;2p-f}{s}&plus;1&space;\right&space;)" title="\large \left(\frac{n+2p-f}{s}+1 \right )" /></a> is fraction we can take **floor** of this value.
 
 - In math textbooks the conv operation is filpping the filter before using it. What we were doing is called cross-correlation operation but the state of art of deep learning is using this as conv operation.
 
 - Same convolutions is a convolution with a padding so that output size is the same as the input size. Its given by the equation:
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\large&space;\textbf&space;p&space;=&space;(\textbf&space;n&space;\times&space;\textbf&space;s&space;-&space;\textbf&space;n&space;&plus;&space;\textbf&space;f&space;-&space;\textbf&space;s)&space;/&space;2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\large&space;\textbf&space;p&space;=&space;(\textbf&space;n&space;\times&space;\textbf&space;s&space;-&space;\textbf&space;n&space;&plus;&space;\textbf&space;f&space;-&space;\textbf&space;s)&space;/&space;2" title="\large \textbf p = (\textbf n \times \textbf s - \textbf n + \textbf f - \textbf s) / 2" /></a>
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;p&space;=&space;\frac{(n&space;\times&space;s&space;-&space;n&space;&plus;&space;f&space;-&space;s)}{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;p&space;=&space;\frac{(n&space;\times&space;s&space;-&space;n&space;&plus;&space;f&space;-&space;s)}{2}" title="\large p = \frac{(n \times s - n + f - s)}{2}" /></a>
 
   when
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\large&space;\textbf&space;s&space;=&space;\textbf&space;1&space;\implies&space;\textbf&space;p&space;=&space;(\textbf&space;f&space;-&space;\textbf&space;1)&space;/&space;\textbf&space;2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\large&space;\textbf&space;s&space;=&space;\textbf&space;1&space;\implies&space;\textbf&space;p&space;=&space;(\textbf&space;f&space;-&space;\textbf&space;1)&space;/&space;\textbf&space;2" title="\large \textbf s = \textbf 1 \implies \textbf p = (\textbf f - \textbf 1) / \textbf 2" /></a>
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;s&space;=&space;1&space;\implies&space;p&space;=&space;\frac{(f&space;-&space;1)}{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;s&space;=&space;1&space;\implies&space;p&space;=&space;\frac{(f&space;-&space;1)}{2}" title="\large s = 1 \implies p = \frac{(f - 1)}{2}" /></a>
 
 ## Convolutions over volumes
 
@@ -140,24 +140,24 @@
   - Input image: 6 x 6 x 3
   - Filter: 3 x 3 x 3
   - Result image: 4 x 4 x 1
-  - In the last result <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\large&space;\textbf&space;p&space;=&space;\textbf&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\large&space;\textbf&space;p&space;=&space;\textbf&space;0" title="\large \textbf p = \textbf 0" /></a>, <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\dpi{120}&space;\large&space;\textbf&space;s&space;=&space;\textbf1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;\large&space;\textbf&space;s&space;=&space;\textbf1" title="\large \textbf s = \textbf1" /></a>
+  - In the last result <a href="https://www.codecogs.com/eqnedit.php?latex=p&space;=&space;0,&space;s&space;=&space;1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p&space;=&space;0,&space;s&space;=&space;1" title="p = 0, s = 1" /></a>
 - Hint the output here is only 2D.
 - We can use multiple filters to detect multiple features or edges. Example.
   - Input image: 6 x 6 x 3
   - 10 Filters: 3 x 3 x 3
   - Result image: 4 x 4 x 10
-  - In the last result <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\large&space;\textbf&space;p&space;=&space;\textbf&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\large&space;\textbf&space;p&space;=&space;\textbf&space;0" title="\large \textbf p = \textbf 0" /></a>, <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\dpi{120}&space;\large&space;\textbf&space;s&space;=&space;\textbf1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;\large&space;\textbf&space;s&space;=&space;\textbf1" title="\large \textbf s = \textbf1" /></a>
+  - In the last result <a href="https://www.codecogs.com/eqnedit.php?latex=p&space;=&space;0,&space;s&space;=&space;1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p&space;=&space;0,&space;s&space;=&space;1" title="p = 0, s = 1" /></a>
 
 ### One Layer of a Convolutional Network
 
 - First we convolve some filters to a given input and then add a bias to each filter output and then get RELU of the result. Example:
 
-  - Input image: 6 x 6 x 3        <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\large&space;\textbf&space;a^{\textbf&space;[&space;\textbf&space;0&space;\textbf&space;]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\large&space;\textbf&space;a^{\textbf&space;[&space;\textbf&space;0&space;\textbf&space;]}" title="\large \textbf a^{\textbf [ \textbf 0 \textbf ]}" /></a>
-  - 10 Filters: 3 x 3 x 3              <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;W^{\textbf&space;[&space;\textbf&space;1&space;\textbf&space;]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;W^{\textbf&space;[&space;\textbf&space;1&space;\textbf&space;]}" title="\textbf W^{\textbf [ \textbf 1 \textbf ]}" /></a>
-  - Result image: 4 x 4 x 10      <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;W^{\textbf&space;[&space;\textbf&space;1&space;\textbf&space;]}&space;\textbf&space;a^{\textbf&space;[&space;\textbf&space;0&space;\textbf&space;]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;W^{\textbf&space;[&space;\textbf&space;1&space;\textbf&space;]}&space;\textbf&space;a^{\textbf&space;[&space;\textbf&space;0&space;\textbf&space;]}" title="\textbf W^{\textbf [ \textbf 1 \textbf ]} \textbf a^{\textbf [ \textbf 0 \textbf ]}" /></a>
-  - Add <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;b" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;b" title="\textbf b" /></a> (bias) with 10 x 1  will get us : 4 x 4 x 10 image      <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;W^{\textbf&space;[&space;\textbf&space;1&space;\textbf&space;]}&space;\textbf&space;a^{\textbf&space;[&space;\textbf&space;0&space;\textbf&space;]}&space;&plus;&space;\textbf&space;b" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;W^{\textbf&space;[&space;\textbf&space;1&space;\textbf&space;]}&space;\textbf&space;a^{\textbf&space;[&space;\textbf&space;0&space;\textbf&space;]}&space;&plus;&space;\textbf&space;b" title="\textbf W^{\textbf [ \textbf 1 \textbf ]} \textbf a^{\textbf [ \textbf 0 \textbf ]} + \textbf b" /></a>
-  - Apply RELU will get us: 4 x 4 x 10 image                **A1** = **ReLU**(<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;W^{\textbf&space;[&space;\textbf&space;1&space;\textbf&space;]}&space;\textbf&space;a^{\textbf&space;[&space;\textbf&space;0&space;\textbf&space;]}&space;&plus;&space;\textbf&space;b" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;W^{\textbf&space;[&space;\textbf&space;1&space;\textbf&space;]}&space;\textbf&space;a^{\textbf&space;[&space;\textbf&space;0&space;\textbf&space;]}&space;&plus;&space;\textbf&space;b" title="\textbf W^{\textbf [ \textbf 1 \textbf ]} \textbf a^{\textbf [ \textbf 0 \textbf ]} + \textbf b" /></a>)
-  - In the last result <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\large&space;\textbf&space;p&space;=&space;\textbf&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\large&space;\textbf&space;p&space;=&space;\textbf&space;0" title="\large \textbf p = \textbf 0" /></a>, <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\dpi{120}&space;\large&space;\textbf&space;s&space;=&space;\textbf1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{120}&space;\large&space;\textbf&space;s&space;=&space;\textbf1" title="\large \textbf s = \textbf1" /></a>
+  - Input image: 6 x 6 x 3        <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;a^{[0]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;a^{[0]}" title="\large a^{[0]}" /></a>
+  - 10 Filters: 3 x 3 x 3              <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;W^{[1]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;W^{[1]}" title="\large W^{[1]}" /></a>
+  - Result image: 4 x 4 x 10      <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;W^{[1]}a^{[0]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;W^{[1]}a^{[0]}" title="\large W^{[1]}a^{[0]}" /></a>
+  - Add <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\textbf&space;b" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\textbf&space;b" title="\textbf b" /></a> (bias) with 10 x 1  will get us : 4 x 4 x 10 image      <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;W^{[1]}a^{[0]}&space;&plus;&space;b" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;W^{[1]}a^{[0]}&space;&plus;&space;b" title="\large W^{[1]}a^{[0]} + b" /></a>
+  - Apply RELU will get us: 4 x 4 x 10 image                <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;A1=relu(W^{[1]}a^{[0]}&space;&plus;&space;b)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;A1=relu(W^{[1]}a^{[0]}&space;&plus;&space;b)" title="\large A1=relu(W^{[1]}a^{[0]} + b)" /></a>
+  - In the last result <a href="https://www.codecogs.com/eqnedit.php?latex=p&space;=&space;0,&space;s&space;=&space;1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p&space;=&space;0,&space;s&space;=&space;1" title="p = 0, s = 1" /></a>
   - Hint number of parameters here are: **(3 x 3 x 3 x 10) + 10 = 280**
 
 - The last example forms a layer in the CNN.
@@ -166,32 +166,157 @@
 
 - Here are some notations we will use. If layer l is a conv layer:
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\textbf&space;f^{\hspace{.1cm}&space;\textbf&space;[\hspace{.05cm}&space;l&space;\hspace{.05cm}&space;\textbf&space;]}&space;=&space;filter&space;\hspace{.1cm}&space;size" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;\textbf&space;f^{\hspace{.1cm}&space;\textbf&space;[\hspace{.05cm}&space;l&space;\hspace{.05cm}&space;\textbf&space;]}&space;=&space;filter&space;\hspace{.1cm}&space;size" title="\large \textbf f^{\hspace{.1cm} \textbf [\hspace{.05cm} l \hspace{.05cm} \textbf ]} = filter \hspace{.1cm} size" /></a> 						  	**Input Size**: <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\textbf&space;n_H^{\textbf[l-1\textbf]}&space;\times&space;\textbf&space;n_W^{\textbf[l-1\textbf]}&space;\times&space;\textbf&space;n_c^{[l-1]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;\textbf&space;n_H^{\textbf[l-1\textbf]}&space;\times&space;\textbf&space;n_W^{\textbf[l-1\textbf]}&space;\times&space;\textbf&space;n_c^{[l-1]}" title="\large \textbf n_H^{\textbf[l-1\textbf]} \times \textbf n_W^{\textbf[l-1\textbf]} \times \textbf n_c^{[l-1]}" /></a>
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\textbf&space;f^{\hspace{.1cm}&space;\textbf&space;[\hspace{.05cm}&space;l&space;\hspace{.05cm}&space;\textbf&space;]}&space;=&space;filter&space;\hspace{.1cm}&space;size" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;f^{\hspace{.1cm}&space;\textbf&space;[\hspace{.05cm}&space;l&space;\hspace{.05cm}&space;\textbf&space;]}&space;=&space;filter&space;\hspace{.1cm}&space;size" title="\large f^{\hspace{.1cm} \textbf [\hspace{.05cm} l \hspace{.05cm} \textbf ]} = filter \hspace{.1cm} size" /></a> 						  	
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\textbf&space;p^{\hspace{.1cm}&space;\textbf&space;[\hspace{.05cm}&space;l&space;\hspace{.05cm}&space;\textbf&space;]}&space;=&space;padding&space;\hspace{.2cm}&space;(default&space;\hspace{.2cm}&space;0)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;\textbf&space;p^{\hspace{.1cm}&space;\textbf&space;[\hspace{.05cm}&space;l&space;\hspace{.05cm}&space;\textbf&space;]}&space;=&space;padding&space;\hspace{.2cm}&space;(default&space;\hspace{.2cm}&space;0)" title="\large \textbf p^{\hspace{.1cm} \textbf [\hspace{.05cm} l \hspace{.05cm} \textbf ]} = padding \hspace{.2cm} (default \hspace{.2cm} 0)" /></a>      **Output Size**: <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\textbf&space;n_H^{\textbf[l\textbf]}&space;\times&space;\textbf&space;n_W^{\textbf[l\textbf]}&space;\times&space;\textbf&space;n_c^{\textbf&space;[l\textbf]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;\textbf&space;n_H^{\textbf[l\textbf]}&space;\times&space;\textbf&space;n_W^{\textbf[l\textbf]}&space;\times&space;\textbf&space;n_c^{\textbf&space;[l\textbf]}" title="\large \textbf n_H^{\textbf[l\textbf]} \times \textbf n_W^{\textbf[l\textbf]} \times \textbf n_c^{\textbf [l\textbf]}" /></a>	
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;p^{\hspace{.1cm}&space;\textbf&space;[\hspace{.05cm}&space;l&space;\hspace{.05cm}&space;\textbf&space;]}&space;=&space;padding&space;\hspace{.2cm}&space;(default&space;\hspace{.2cm}&space;0)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;p^{\hspace{.1cm}&space;\textbf&space;[\hspace{.05cm}&space;l&space;\hspace{.05cm}&space;\textbf&space;]}&space;=&space;padding&space;\hspace{.2cm}&space;(default&space;\hspace{.2cm}&space;0)" title="\large p^{\hspace{.1cm} \textbf [\hspace{.05cm} l \hspace{.05cm} \textbf ]} = padding \hspace{.2cm} (default \hspace{.2cm} 0)" /></a>      
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\textbf&space;s^{\hspace{.1cm}&space;\textbf&space;[\hspace{.05cm}&space;l&space;\hspace{.05cm}&space;\textbf&space;]}&space;=&space;stride" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;\textbf&space;s^{\hspace{.1cm}&space;\textbf&space;[\hspace{.05cm}&space;l&space;\hspace{.05cm}&space;\textbf&space;]}&space;=&space;stride" title="\large \textbf s^{\hspace{.1cm} \textbf [\hspace{.05cm} l \hspace{.05cm} \textbf ]} = stride" /></a> 									  where <a href="https://www.codecogs.com/eqnedit.php?latex=\textbf&space;n_{H/W}^{\textbf[l\textbf]}&space;=&space;\Biggl\lfloor{\left(\frac{\textbf&space;n_{H/W}^{\textbf&space;[l&space;-&space;1&space;\textbf&space;]}&space;&plus;&space;\textbf{2p}^{\textbf[l\textbf]}&space;-&space;\textbf&space;f^{\textbf[l\textbf]}}{\textbf&space;s\textbf[l\textbf]}\right)&space;&plus;&space;\textbf&space;1}\Biggl\rfloor" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\textbf&space;n_{H/W}^{\textbf[l\textbf]}&space;=&space;\Biggl\lfloor{\left(\frac{\textbf&space;n_{H/W}^{\textbf&space;[l&space;-&space;1&space;\textbf&space;]}&space;&plus;&space;\textbf{2p}^{\textbf[l\textbf]}&space;-&space;\textbf&space;f^{\textbf[l\textbf]}}{\textbf&space;s\textbf[l\textbf]}\right)&space;&plus;&space;\textbf&space;1}\Biggl\rfloor" title="\textbf n_{H/W}^{\textbf[l\textbf]} = \Biggl\lfloor{\left(\frac{\textbf n_{H/W}^{\textbf [l - 1 \textbf ]} + \textbf{2p}^{\textbf[l\textbf]} - \textbf f^{\textbf[l\textbf]}}{\textbf s\textbf[l\textbf]}\right) + \textbf 1}\Biggl\rfloor" /></a>
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;s^{\hspace{.1cm}&space;\textbf&space;[\hspace{.05cm}&space;l&space;\hspace{.05cm}&space;\textbf&space;]}&space;=&space;stride" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;s^{\hspace{.1cm}&space;\textbf&space;[\hspace{.05cm}&space;l&space;\hspace{.05cm}&space;\textbf&space;]}&space;=&space;stride" title="\large \textbf s^{\hspace{.1cm} \textbf [\hspace{.05cm} l \hspace{.05cm} \textbf ]} = stride" /></a> 									  
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\textbf&space;n_c^{\textbf&space;[\hspace{0.05cm}l\hspace{0.05cm}\textbf&space;]}&space;=&space;number&space;\hspace{0.2cm}&space;of&space;\hspace{0.2cm}&space;filters" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;\textbf&space;n_c^{\textbf&space;[\hspace{0.05cm}l\hspace{0.05cm}\textbf&space;]}&space;=&space;number&space;\hspace{0.2cm}&space;of&space;\hspace{0.2cm}&space;filters" title="\large \textbf n_c^{\textbf [\hspace{0.05cm}l\hspace{0.05cm}\textbf ]} = number \hspace{0.2cm} of \hspace{0.2cm} filters" /></a> 		Each filter is: <a href="https://www.codecogs.com/eqnedit.php?latex=\textbf&space;f^{\textbf&space;[l\textbf&space;]}&space;\times&space;\textbf&space;f^{\textbf&space;[l\textbf&space;]}&space;\times&space;\textbf&space;n_c^{[l-1]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\textbf&space;f^{\textbf&space;[l\textbf&space;]}&space;\times&space;\textbf&space;f^{\textbf&space;[l\textbf&space;]}&space;\times&space;\textbf&space;n_c^{[l-1]}" title="\textbf f^{\textbf [l\textbf ]} \times \textbf f^{\textbf [l\textbf ]} \times \textbf n_c^{[l-1]}" /></a> 
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;n_c^{\textbf&space;[\hspace{0.05cm}l\hspace{0.05cm}\textbf&space;]}&space;=&space;number&space;\hspace{0.2cm}&space;of&space;\hspace{0.2cm}&space;filters" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;n_c^{\textbf&space;[\hspace{0.05cm}l\hspace{0.05cm}\textbf&space;]}&space;=&space;number&space;\hspace{0.2cm}&space;of&space;\hspace{0.2cm}&space;filters" title="\large n_c^{\textbf [\hspace{0.05cm}l\hspace{0.05cm}\textbf ]} = number \hspace{0.2cm} of \hspace{0.2cm} filters" /></a> 		Each filter is: <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\large&space;f^{[l]}&space;\times&space;f^{[l]}&space;\times&space;n_c^{[l-1]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;\large&space;f^{[l]}&space;\times&space;f^{[l]}&space;\times&space;n_c^{[l-1]}" title="\large \large f^{[l]} \times f^{[l]} \times n_c^{[l-1]}" /></a> 
 
-  ```
-  Hyperparameters
-  f[l] = filter size
-  p[l] = padding	# Default is zero
-  s[l] = stride
-  nc[l] = number of filters
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;Input&space;=&space;n_{H}^{[l-1]}\times&space;n_{W}^{[l-1]}&space;\times&space;n_{c}^{[l-1]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;Input&space;=&space;n_{H}^{[l-1]}\times&space;n_{W}^{[l-1]}&space;\times&space;n_{c}^{[l-1]}" title="\large Input = n_{H}^{[l-1]}\times n_{W}^{[l-1]} \times n_{c}^{[l-1]}" /></a>
   
-  Input:  n[l-1] x n[l-1] x nc[l-1]	Or	 nH[l-1] x nW[l-1] x nc[l-1]
-  Output: n[l] x n[l] x nc[l]	Or	 nH[l] x nW[l] x nc[l]
-  Where n[l] = (n[l-1] + 2p[l] - f[l] / s[l]) + 1
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;Output&space;=&space;n_{H}^{[l]}\times&space;n_{W}^{[l]}&space;\times&space;n_{c}^{[l]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;Output&space;=&space;n_{H}^{[l]}\times&space;n_{W}^{[l]}&space;\times&space;n_{c}^{[l]}" title="\large Output = n_{H}^{[l]}\times n_{W}^{[l]} \times n_{c}^{[l]}" /></a>
   
-  Each filter is: f[l] x f[l] x nc[l-1]
+  where <a href="https://www.codecogs.com/eqnedit.php?latex=n_{H/W}^{[l]}&space;=&space;\left&space;\lfloor&space;\left(&space;\frac{n_{H/W}^{[l-1]}&space;&plus;&space;2p^{[l]}&space;-&space;f^{[l]}}{s^{[l]}}&space;&plus;&space;1&space;\right)\right&space;\rfloor" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n_{H/W}^{[l]}&space;=&space;\left&space;\lfloor&space;\left(&space;\frac{n_{H/W}^{[l-1]}&space;&plus;&space;2p^{[l]}&space;-&space;f^{[l]}}{s^{[l]}}&space;&plus;&space;1&space;\right)\right&space;\rfloor" title="n_{H/W}^{[l]} = \left \lfloor \left( \frac{n_{H/W}^{[l-1]} + 2p^{[l]} - f^{[l]}}{s^{[l]}} + 1 \right)\right \rfloor" /></a>
   
-  Activations: a[l] is nH[l] x nW[l] x nc[l]
-  		     A[l] is m x nH[l] x nW[l] x nc[l]   # In batch or minbatch training
-  		     
-  Weights: f[l] * f[l] * nc[l-1] * nc[l]
-  bias:  (1, 1, 1, nc[l])
-  ```
+  Activations:
+  
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;a^{[l]}&space;=&space;n_H^{[l]}&space;\times&space;n_W^{[l]}&space;\times&space;n_c^{[l]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;a^{[l]}&space;=&space;n_H^{[l]}&space;\times&space;n_W^{[l]}&space;\times&space;n_c^{[l]}" title="\large a^{[l]} = n_H^{[l]} \times n_W^{[l]} \times n_c^{[l]}" /></a>
+  
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;A^{[l]}&space;=&space;m&space;\times&space;n_H^{[l]}&space;\times&space;n_W^{[l]}&space;\times&space;n_c^{[l]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;A^{[l]}&space;=&space;m&space;\times&space;n_H^{[l]}&space;\times&space;n_W^{[l]}&space;\times&space;n_c^{[l]}" title="\large A^{[l]} = m \times n_H^{[l]} \times n_W^{[l]} \times n_c^{[l]}" /></a>
+  
+  Weights: <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;f^{[l]}&space;\times&space;f^{[l]}&space;\times&space;n_c^{[l-1]}&space;\times&space;n_c^{[l]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;f^{[l]}&space;\times&space;f^{[l]}&space;\times&space;n_c^{[l-1]}&space;\times&space;n_c^{[l]}" title="\large f^{[l]} \times f^{[l]} \times n_c^{[l-1]} \times n_c^{[l]}" /></a>
+  
+  bias: <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;(1,&space;1,&space;1,&space;n_c^{[l]})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;(1,&space;1,&space;1,&space;n_c^{[l]})" title="\large (1, 1, 1, n_c^{[l]})" /></a> 
 
 ### A simple convolution network example
+
+- Lets build a big example.
+  - Input Image are:   <a href="https://www.codecogs.com/eqnedit.php?latex=a^{[0]}&space;=&space;39\times&space;39\times&space;3" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a^{[0]}&space;=&space;39\times&space;39\times&space;3" title="a^{[0]} = 39\times 39\times 3" /></a>
+    - <a href="https://www.codecogs.com/eqnedit.php?latex=n^{[0]}&space;=&space;39" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n^{[0]}&space;=&space;39" title="n^{[0]} = 39" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=n_c^{[0]}&space;=&space;3" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n_c^{[0]}&space;=&space;3" title="n_c^{[0]} = 3" /></a>
+  - First layer (Conv layer):
+    - <a href="https://www.codecogs.com/eqnedit.php?latex=f^{[1]}=3,s^{[1]}=1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f^{[1]}=3,s^{[1]}=1" title="f^{[1]}=3,s^{[1]}=1" /></a>, and <a href="https://www.codecogs.com/eqnedit.php?latex=p^{[1]}=0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p^{[1]}=0" title="p^{[1]}=0" /></a>
+    - number of filters = 10
+    - Then output are <a href="https://www.codecogs.com/eqnedit.php?latex=a^{[1]}=37&space;\times&space;37&space;\times&space;10" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a^{[1]}=37&space;\times&space;37&space;\times&space;10" title="a^{[1]}=37 \times 37 \times 10" /></a>
+      - <a href="https://www.codecogs.com/eqnedit.php?latex=n^{[1]}=37" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n^{[1]}=37" title="n^{[1]}=37" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=n_c^{[1]}=10" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n_c^{[1]}=10" title="n_c^{[1]}=10" /></a>
+  - Second layer (Conv layer):
+    - <a href="https://www.codecogs.com/eqnedit.php?latex=f^{[2]}=5,s^{[2]}=2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f^{[2]}=5,s^{[2]}=2" title="f^{[2]}=5,s^{[2]}=2" /></a>, <a href="https://www.codecogs.com/eqnedit.php?latex=p^{[2]}=0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p^{[2]}=0" title="p^{[2]}=0" /></a> 
+    - number of filters = 20
+    - The output are <a href="https://www.codecogs.com/eqnedit.php?latex=a^{[2]}=17\times&space;17&space;\times&space;20" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a^{[2]}=17\times&space;17&space;\times&space;20" title="a^{[2]}=17\times 17 \times 20" /></a> 
+      - <a href="https://www.codecogs.com/eqnedit.php?latex=n^{[2]}=17,&space;n_c^{[2]}=20" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n^{[2]}=17,&space;n_c^{[2]}=20" title="n^{[2]}=17, n_c^{[2]}=20" /></a> 
+    - Hint shrinking goes much faster because the stride is 2
+  - Third layer (Conv layer):
+    - <a href="https://www.codecogs.com/eqnedit.php?latex=f^{[3]}=5,&space;s^{[3]}=2,&space;p^{[3]}=0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f^{[3]}=5,&space;s^{[3]}=2,&space;p^{[3]}=0" title="f^{[3]}=5, s^{[3]}=2, p^{[3]}=0" /></a>
+    - number of filters = 40
+    - The output are <a href="https://www.codecogs.com/eqnedit.php?latex=a^{[3]}=&space;7&space;\times&space;7&space;\times&space;40" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a^{[3]}=&space;7&space;\times&space;7&space;\times&space;40" title="a^{[3]}= 7 \times 7 \times 40" /></a>
+      - <a href="https://www.codecogs.com/eqnedit.php?latex=n^{[3]}=&space;7,&space;n_c^{[3]}=&space;40" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n^{[3]}=&space;7,&space;n_c^{[3]}=&space;40" title="n^{[3]}= 7, n_c^{[3]}= 40" /></a>
+  - Forth layer (Fully connected Softmax)
+    - <a href="https://www.codecogs.com/eqnedit.php?latex=a^{[3]}&space;=&space;7&space;\times&space;7&space;\times&space;40&space;=&space;1960" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a^{[3]}&space;=&space;7&space;\times&space;7&space;\times&space;40&space;=&space;1960" title="a^{[3]} = 7 \times 7 \times 40 = 1960" /></a>  as a vector..
+- In the last example you seen that the image are getting smaller after each layer and thats the trend now.
+- Types of layer in a convolutional network:
+  - Convolution :- **`Conv`**
+  - Pooling :- **`Pool`**
+  - Fully connected :- **`FC`**
+
+### Pooling layers
+
+- Other than the conv layers, CNNs often uses pooling layers to reduce the size of the inputs, speed up computation, and to make some of the features it detects more robust.
+
+- Max pooling example:
+
+  ![](images/pooling.png)
+
+  - This example has <a href="https://www.codecogs.com/eqnedit.php?latex=f=2,&space;s=2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f=2,&space;s=2" title="f=2, s=2" /></a>, and <a href="https://www.codecogs.com/eqnedit.php?latex=p&space;=&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p&space;=&space;0" title="p = 0" /></a> hyperparameters
+
+- The max pooling is saying, if the feature is detected anywhere in this filter then keep a high number. But the main reason why people are using pooling because its works well in practice and reduce computations.
+
+- Max pooling has no parameters to learn.
+
+- Example of Max pooling on 3D input:
+
+  - Input: 4 x 4 x 10
+  - Max pooling size = 2  and stride = 2
+  - Output: 2 x 2 x 10
+
+- Average pooling is taking the averages of the values instead of taking the max values.
+
+- Max pooling is used more often than average pooling in practice.
+
+- If stride of pooling equals the size, it will then apply the effect of shrinking.
+
+- Hyperparameters summary
+
+  - <a href="https://www.codecogs.com/eqnedit.php?latex=f" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f" title="f" /></a> : filter size.
+  - <a href="https://www.codecogs.com/eqnedit.php?latex=s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s" title="s" /></a>  : stride.
+  - Padding are rarely uses here.
+  - Max or average pooling.
+
+### Convolutional neural network example
+
+- Now we will deal with a full CNN example. This example is something like the ***LeNet-5*** that was invented by Yann Lecun.
+
+  - Input Image are:   <a href="https://www.codecogs.com/eqnedit.php?latex=a^{[0]}=32\times&space;32\times&space;3" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a^{[0]}=32\times&space;32\times&space;3" title="a^{[0]}=32\times 32\times 3" /></a>
+    - <a href="https://www.codecogs.com/eqnedit.php?latex=n^{[0]}=32" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n^{[0]}=32" title="n^{[0]}=32" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=n_c^{[0]}=3" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n_c^{[0]}=3" title="n_c^{[0]}=3" /></a>
+  - First layer (Conv layer):       **`#Conv1`**
+    - <a href="https://www.codecogs.com/eqnedit.php?latex=f^{[1]}=5,&space;s^{[1]}=1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f^{[1]}=5,&space;s^{[1]}=1" title="f^{[1]}=5, s^{[1]}=1" /></a>, and <a href="https://www.codecogs.com/eqnedit.php?latex=p^{[1]}=0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p^{[1]}=0" title="p^{[1]}=0" /></a>
+    - number of filters = 6
+    - Then output are <a href="https://www.codecogs.com/eqnedit.php?latex=a^{[1]}=28\times&space;28\times&space;6" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a^{[1]}=28\times&space;28\times&space;6" title="a^{[1]}=28\times 28\times 6" /></a>
+      - <a href="https://www.codecogs.com/eqnedit.php?latex=n^{[1]}=28" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n^{[1]}=28" title="n^{[1]}=28" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=n_c^{[1]}=6" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n_c^{[1]}=6" title="n_c^{[1]}=6" /></a>
+    - Then apply (Max pooling):         **`#Pool1`**
+      - <a href="https://www.codecogs.com/eqnedit.php?latex=f_p^{[1]}=2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f_p^{[1]}=2" title="f_p^{[1]}=2" /></a>, and <a href="https://www.codecogs.com/eqnedit.php?latex=s_p^{[1]}=2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s_p^{[1]}=2" title="s_p^{[1]}=2" /></a>
+      - The output are <a href="https://www.codecogs.com/eqnedit.php?latex=a^{[1]}=14&space;\times&space;14&space;\times&space;6" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a^{[1]}=14&space;\times&space;14&space;\times&space;6" title="a^{[1]}=14 \times 14 \times 6" /></a>
+  - Second layer (Conv layer):   **`#Conv2`**
+    - <a href="https://www.codecogs.com/eqnedit.php?latex=f^{[2]}&space;=&space;5,&space;s^{[2]}&space;=&space;1,&space;p^{[2]}&space;=&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f^{[2]}&space;=&space;5,&space;s^{[2]}&space;=&space;1,&space;p^{[2]}&space;=&space;0" title="f^{[2]} = 5, s^{[2]} = 1, p^{[2]} = 0" /></a>
+    - number of filters = 16
+    - The output are <a href="https://www.codecogs.com/eqnedit.php?latex=a^{[2]}&space;=&space;10\times&space;10\times&space;16" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a^{[2]}&space;=&space;10\times&space;10\times&space;16" title="a^{[2]} = 10\times 10\times 16" /></a>
+      - <a href="https://www.codecogs.com/eqnedit.php?latex=n^{[2]}&space;=&space;10,&space;n_c^{[2]}&space;=&space;16" target="_blank"><img src="https://latex.codecogs.com/gif.latex?n^{[2]}&space;=&space;10,&space;n_c^{[2]}&space;=&space;16" title="n^{[2]} = 10, n_c^{[2]} = 16" /></a>
+    - Then apply (Max pooling):**`#Pool2`**
+      - <a href="https://www.codecogs.com/eqnedit.php?latex=f^{[2]}_p&space;=&space;2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f^{[2]}_p&space;=&space;2" title="f^{[2]}_p = 2" /></a>, and <a href="https://www.codecogs.com/eqnedit.php?latex=s^{[2]}_p&space;=&space;2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s^{[2]}_p&space;=&space;2" title="s^{[2]}_p = 2" /></a>
+      - The output are <a href="https://www.codecogs.com/eqnedit.php?latex=a^{[2]}=5\times&space;5\times&space;16" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a^{[2]}=5\times&space;5\times&space;16" title="a^{[2]}=5\times 5\times 16" /></a>
+  - Third layer (Fully connected)   **`#FC3`**
+    - Number of neurons are 120
+    - The output <a href="https://www.codecogs.com/eqnedit.php?latex=a^{[3]}=120\times&space;3" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a^{[3]}=120\times&space;3" title="a^{[3]}=120\times 3" /></a> . 400 came from `5x5x16`
+  - Forth layer (Fully connected)  **`#FC4`**
+    - Number of neurons are 84
+    - The output <a href="https://www.codecogs.com/eqnedit.php?latex=a^{[4]}=84\times&space;1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a^{[4]}=84\times&space;1" title="a^{[4]}=84\times 1" /></a>.
+  - Fifth layer (Softmax)
+    - Number of neurons is 10 if we need to identify for example the 10 digits.
+
+- Hint a Conv1 and Pool1 is treated as one layer.
+
+- Some statistics about the last example:
+
+  |                                                              | Activation Shape | Activation Size | #parameters |
+  | :----------------------------------------------------------: | :--------------: | :-------------: | :---------: |
+  |                            Input:                            |   (32, 32, 3)    |      3072       |      0      |
+  | CONV1(<a href="https://www.codecogs.com/eqnedit.php?latex=f=5,&space;s=1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f=5,&space;s=1" title="f=5, s=1" /></a>) |   (28, 28, 8)    |      6272       |     208     |
+  |                            POOL1                             |   (14, 14, 8)    |      1568       |      0      |
+  | CONV2(<a href="https://www.codecogs.com/eqnedit.php?latex=f=5,&space;s=1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?f=5,&space;s=1" title="f=5, s=1" /></a>) |   (10, 10, 16)   |      1600       |     416     |
+  |                            POOL2                             |    (5, 5, 16)    |       400       |      0      |
+  |                             FC3                              |     (120, 1)     |       120       |   48,001    |
+  |                             FC4                              |     (84, 1)      |       84        |   10,081    |
+  |                           Softmax                            |      (10,1)      |       10        |     841     |
+
+- Hyperparameters are a lot. For choosing the value of each you should follow the guideline that we will discuss later or check the literature and takes some ideas and numbers from it.
+
+- Usually the input size decreases over layers while the number of filters increases.
+
+- A CNN usually consists of one or more convolution (Not just one as the shown examples) followed by a pooling.
+
+- Fully connected layers has the most parameters in the network.
+
+- To consider using these blocks together you should look at other working examples firsts to get some intuitions.
+
+### Why convolutions?
+
+- Two main advantages of Convs are:
+
+  - Parameter sharing.
+    - A feature detector (such as a vertical edge detector) that's useful in one part of the image is probably useful in another part of the image.
+  - sparsity of connections.
+    - In each layer, each output value depends only on a small number of inputs which makes it translation invariance.
+
+- Putting it all together:
+
+  ![](images/alltogether.png)
